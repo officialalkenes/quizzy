@@ -1,0 +1,26 @@
+[1mdiff --git a/user/models.py b/user/models.py[m
+[1mindex 8bdf99b..01ad55c 100644[m
+[1m--- a/user/models.py[m
+[1m+++ b/user/models.py[m
+[36m@@ -46,7 +46,7 @@[m [mclass User(AbstractBaseUser, PermissionsMixin):[m
+     last_login = models.DateTimeField(auto_now=True)[m
+ [m
+     objects = UserManager()[m
+[31m-    USERNAME_FIELD = 'email'[m
+[32m+[m[32m    USERNAME_FIELDS = 'email'[m
+     OTHER_FIELDS = ('username', 'fullname')[m
+ [m
+     def __str__(self) -> str:[m
+[36m@@ -88,7 +88,11 @@[m [mclass Profile(models.Model):[m
+         verbose_name_plural = 'Profiles'[m
+ [m
+     def get_age(self):[m
+[31m-        pass[m
+[32m+[m[32m        today = date.today()[m
+[32m+[m[32m        age = today-self.date_of_birth[m
+[32m+[m[32m        years = int((age).days/365.25)[m
+[32m+[m[32m        return years[m
+[32m+[m
+ [m
+     def save(self, *args, **kwargs):[m
+         today = date.today()[m

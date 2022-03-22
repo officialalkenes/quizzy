@@ -46,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     last_login = models.DateTimeField(auto_now=True)
 
     objects = UserManager()
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELDS = 'email'
     OTHER_FIELDS = ('username', 'fullname')
 
     def __str__(self) -> str:
@@ -88,7 +88,11 @@ class Profile(models.Model):
         verbose_name_plural = 'Profiles'
 
     def get_age(self):
-        pass
+        today = date.today()
+        age = today-self.date_of_birth
+        years = int((age).days/365.25)
+        return years
+
 
     def save(self, *args, **kwargs):
         today = date.today()
