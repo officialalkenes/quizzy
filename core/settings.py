@@ -30,6 +30,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+
+    'quiz',
+    'user'
 ]
 
 MIDDLEWARE = [
@@ -61,6 +65,9 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTH_USER_MODEL = 'user.User'
+
 
 WSGI_APPLICATION = 'core.wsgi.application'
 

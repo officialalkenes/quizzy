@@ -3,13 +3,14 @@ from django.contrib import admin
 from .models import Answer, Question, Quiz
 
 # Register your models here.
-class InlineAnswer(admin.TabularInline):
+class InlineAnswer(admin.StackedInline):
     model = Answer
-
+    extra = 4
 
 @admin.register(Question)
 class QuestionAdmin(admin.ModelAdmin):
-    inline = InlineAnswer
+    inlines = [InlineAnswer,
+    ]
 
 
 admin.site.register((Answer, Quiz))
